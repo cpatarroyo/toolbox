@@ -38,6 +38,7 @@ haplotypes<-function(table,ploidy=3) {
 
 samhaplo<-function(table) {
   populations<-levels(as.factor(table$Pop))
+  stlocus<-min(grep("[0-9]",colnames(table)))
   for(h in populations) {
     indpop<-grep(h,table$Pop)
     table[indpop,stlocus:length(table[1,])] <- apply(table[indpop,stlocus:length(table[1,])],MARGIN = 2,FUN = sample)
